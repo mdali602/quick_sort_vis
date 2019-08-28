@@ -3,12 +3,8 @@ import { Button } from 'reactstrap';
 
 import './QuickSortOutput.scss';
 
-<<<<<<< Updated upstream
-const QuickSortOutput = ({ in_arr, exe_arr, executeAll, executeOneStep }) => {
-=======
 const QuickSortOutput = ({ in_arr, exe_arr, left, right, pivot, execute }) => {
   // console.log("TCL: QuickSortOutput -> sortedEl", sortedEl)
->>>>>>> Stashed changes
   return (
     <Fragment>
       <div className="qso">
@@ -26,23 +22,23 @@ const QuickSortOutput = ({ in_arr, exe_arr, left, right, pivot, execute }) => {
           {
             exe_arr.map((a, key) => (
               <div key={key} className="exe-arr">
-              <div className={'exe-up'}>
-                <span> {a} </span>
+              <div className={'exe-up' + (pivot === key ? 'pivot-p ' : '')} >
+                <span> {a}</span>
+              </div>
+              <div className="exe-down">
+                {(left === key) ? <span>L</span> : ''}
+                { (right === key) ? <span>R</span> : ''}
+                {(pivot === key) ? <span>P</span> : ''}
               </div>
               </div>
             ))
           }
         </div>
       </div>
-<<<<<<< Updated upstream
-        {/* <Button type="button" onClick={executeOneStep}>Next</Button> */}
-      <Button type="button" onClick={executeAll}>Run</Button>
-=======
       <div>
-        <Button className="run-btn" type="button" onClick={() => execute('with_animation')}>Run with animation</Button>
-        <Button className="run-btn" type="button" onClick={() => execute('without_animation')}>Run without animation</Button>
+        <Button className="run-btn" type="button" onClick={() => execute('with_animation')}>Run with animation (working fine but visual is not 100% )</Button>
+        <Button className="run-btn" type="button" onClick={() => execute('without_animation')}>Run without animation (working 100%) </Button>
       </div>
->>>>>>> Stashed changes
 
     </Fragment>
   )

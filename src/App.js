@@ -12,18 +12,14 @@ const swap = (arr, firstIndex, secondIndex) => {
 class App extends Component {
   state = {
     err_msg: '',
-<<<<<<< Updated upstream
-    size: 0,
-    cs_arr: '',
-=======
     size: 0,// 7
     cs_arr: '',// 23, 45, 16, 37, 3, 99, 22
->>>>>>> Stashed changes
     in_arr: [],
     exe_arr: [],
     left: 0,
     right: 0,
-    pivot: 0
+    pivot: 0,
+    sortedEl: []
   }
 
   handleSubmit = (e) => {
@@ -40,12 +36,6 @@ class App extends Component {
     this.setState({
       err_msg,
       in_arr,
-<<<<<<< Updated upstream
-      exe_arr: in_arr,
-      right: (size - 1),
-      pivot: (size - 1)
-=======
->>>>>>> Stashed changes
     });
   }
 
@@ -53,41 +43,6 @@ class App extends Component {
     // e.target.name
     this.setState({ [e.target.name]: e.target.value });
   }
-<<<<<<< Updated upstream
-
-  quickSort = (arr, start, end) => {
-    if (start < end) {
-      let pivot = this.partition(arr, start, end);
-      this.quickSort(arr, start, pivot - 1);
-      this.quickSort(arr, pivot + 1, end);
-    }
-  }
-
-  partition = (arr, start, end) => {
-    let pivot = end;
-    let left = start;
-    let right = end - 1;
-
-    while (left <= right) {
-      if (arr[left] < arr[pivot]) {
-        left++;
-      } else if (arr[right] > arr[pivot]) {
-        right--;
-      } else {
-        swap(arr, left, right);
-      }
-    }
-    swap(arr, left, pivot);
-    return left;
-  }
-
-  executeAll = () => {
-    let { exe_arr, size } = this.state;
-    this.quickSort(exe_arr, 0, size - 1);
-    this.setState({
-      exe_arr
-    })
-=======
   
   updateStateAsync = (arr, left, right, pivot, isSwap) => {
     return new Promise((resolve) => {
@@ -172,7 +127,6 @@ class App extends Component {
       this.quickSort(arr, start, pivot - 1);
       this.quickSort(arr, pivot + 1, end);
     }
->>>>>>> Stashed changes
   }
 
   partition = (arr, start, end) => {
@@ -208,15 +162,11 @@ class App extends Component {
   }
 
   render() {
-    const { size, cs_arr, in_arr, exe_arr, err_msg } = this.state;
+    const { size, cs_arr, err_msg} = this.state;
     return (
       <div className="qs">
         <QuickSortInput size={size} cs_arr={cs_arr} err_msg={err_msg} handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
-<<<<<<< Updated upstream
-        <QuickSortOutput in_arr={in_arr} exe_arr={exe_arr} executeAll={this.executeAll} executeOneStep={this.executeOneStep} />
-=======
         <QuickSortOutput {...this.state} execute={this.execute} executeOneStep={this.executeOneStep} />
->>>>>>> Stashed changes
       </div>
     );
   }
